@@ -1,0 +1,17 @@
+# Connection settings for dbt Projects on Snowflake (Workspaces).
+# No account, no user, no password, no key: dbt runs INSIDE Snowflake, as you,
+# with your current session. Compare with the local dbt Core profile of the old lab,
+# which needed SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER and a private key file.
+redgrave:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_FILE') }}"
+      role: SYSADMIN
+      warehouse: REDGRAVE_WH
+      database: REDGRAVE
+      schema: SILVER
+      threads: 4
