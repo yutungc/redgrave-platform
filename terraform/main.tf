@@ -82,3 +82,4 @@ resource "snowflake_grant_privileges_to_account_role" "grader_schema" {
     schema_name = snowflake_schema.marts.fully_qualified_name
   }
 }
+
